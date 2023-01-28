@@ -55,6 +55,8 @@
     {{-- Timepicker --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
+    @stack('js-internal')
+
 </body>
 
 </html>

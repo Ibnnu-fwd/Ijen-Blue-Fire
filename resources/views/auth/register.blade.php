@@ -33,12 +33,12 @@
         <x-input id="nik" label="Nomor Induk Keluarga" name="nik" type="text" required :value="@old('nik')" />
 
         {{-- Birth Date --}}
-        <x-input-single-datepicker label="Tanggal Mulai" id="start_date" class="block w-full" type="text"
-            name="start_date" required />
+        <x-input-single-datepicker label="Tanggal Lahir" id="birth_date" class="block w-full" type="text"
+            name="birth_date" required />
 
         {{-- Phone Number // TODO: add validation --}}
-        <x-input id="phone_number" label="Nomor Telepon" name="phone_number" type="text" required
-            :value="@old('phone_number')" />
+        <x-input id="phone" label="Nomor Telepon" name="phone" type="text" required
+            :value="@old('phone')" />
 
         {{-- Address --}}
         <x-textarea id="address" label="Alamat" name="address" required></x-textarea>
@@ -64,4 +64,26 @@
             </x-button>
         </div>
     </form>
+
+    @push('js-internal')
+        <script>
+            $(function() {
+                @if (Session::has('success'))
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        text: '{{ Session::get('success') }}'
+                    });
+                @endif
+
+                @if (Session::has('error'))
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Terjadi Kesalahan',
+                        text: '{{ Session::get('error') }}'
+                    });
+                @endif
+            });
+        </script>
+    @endpush
 </x-guest-layout>
